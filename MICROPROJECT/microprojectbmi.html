@@ -1,0 +1,72 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>BMI Calculator – FitLife</title>
+    <link rel="stylesheet" href="mainstyle.css">
+    <script>
+        function calculateBMI() {
+            let height = document.getElementById("height").value;
+            let weight = document.getElementById("weight").value;
+
+            if (height === "" || weight === "") {
+                document.getElementById("result").innerHTML = "Please enter both values.";
+                return;
+            }
+
+            let h = height / 100; 
+            let bmi = weight / (h * h);
+            bmi = bmi.toFixed(2);
+
+            let category = "";
+
+            if (bmi < 18.5) category = "Underweight";
+            else if (bmi < 24.9) category = "Normal Weight";
+            else if (bmi < 29.9) category = "Overweight";
+            else category = "Obese";
+
+            document.getElementById("result").innerHTML =
+                "Your BMI is <span class='highlight'>" + bmi + "</span> – " + category;
+        }
+    </script>
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <div class="logo">FitLife</div>
+        <ul class="nav-links">
+            <li><a href="microprojecthome.html">Home</a></li>
+            <li><a href="microprojectabout.html">About</a></li>
+            <li><a href="microprojectlearnmore.html">Learn More</a></li>
+            <li><a href="microprojectcontact.html">Contact</a></li>
+        </ul>
+        <button class="cta-btn">Join Now</button>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-text slide-in-left">
+        <h1>Check Your <span class="highlight">BMI</span></h1>
+        <p>
+            Use our quick Body Mass Index calculator to understand your health category 
+            based on your height and weight.
+        </p>
+    </div>
+
+    <div class="hero-img fade-in">
+        <img src="https://images.unsplash.com/photo-1591311630200-ffa9120a540f?q=80&w=1110&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="BMI Calculator">
+    </div>
+</section>
+
+<section class="input-section">
+    <div class="input-container" style="text-align:center;">
+        <input type="number" id="height" placeholder="Enter height in cm" class="display" style="margin-bottom:20px;"><br>
+        <input type="number" id="weight" placeholder="Enter weight in kg" class="display"><br><br>
+        <button class="primary-btn" onclick="calculateBMI()">Calculate BMI</button>
+        <p id="result" style="margin-top:20px; font-size:20px;"></p>
+    </div>
+</section>
+
+</body>
+</html>
